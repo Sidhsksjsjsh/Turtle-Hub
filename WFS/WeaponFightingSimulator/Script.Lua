@@ -161,9 +161,16 @@ local P_2 = ui:new("Defense & Dungeon")
 local P_3 = ui:new("Music")
 local P_4 = ui:new("Misc")
 local P_5 = ui:new("Tower")
-local P_6 = ui:new("More")
+local P_6 = ui:new("Credit & Social")
 local P_7 = ui:new("???")
 
+P_1:Ping()
+P_1:FPS()
+
+P_6:CreateLabel("","My discord: C4#4172")
+P_6:CreateLabel("","My tiktok: @capviktor")
+P_6:CreateLabel("","Roblox account: Rivanda_Cheater (VORTEX)")
+P_6:CreateLabel("","Enjoy!")
 
 P_4:CreateToggle("Mount", false, function(value)
 local args = {
