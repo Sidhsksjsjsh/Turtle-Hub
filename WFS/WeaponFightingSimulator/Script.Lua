@@ -166,6 +166,8 @@ local P_7 = ui:new("???")
 
 P_1:Ping()
 P_1:FPS()
+P_1:TimePlayed()
+P_1:UTC()
 
 P_6:CreateLabel("","My discord: C4#4172")
 P_6:CreateLabel("","My tiktok: @capviktor")
