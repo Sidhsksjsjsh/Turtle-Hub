@@ -16,6 +16,7 @@ local RemoveSoundSystem = false
 local sinister = math.random(12)
 local Tank = math.random(39)
 
+local workspace = game:GetService("Workspace")
 
 local plr = game.Players.LocalPlayer.Character.HumanoidRootPart
 local char = game.Players.LocalPlayer.Character
@@ -113,7 +114,7 @@ sound.Looped = true
 sound.TimePosition = 1
 sound:Play()
 end
-wait()
+
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/aC8GQEKE"))()
 local ui = Library:CreateWindow()
 
@@ -171,16 +172,11 @@ P_1:UTC()
 
 P_6:CreateLabel("","My discord: C4#4172")
 P_6:CreateLabel("","My tiktok: @capviktor")
-P_6:CreateLabel("","Roblox account: Rivanda_Cheater (VORTEX)")
+P_6:CreateLabel("","Roblox account: Rivanda_Cheater")
 P_6:CreateLabel("","Enjoy!")
 
 P_4:CreateToggle("Mount", false, function(value)
-local args = {
-    [1] = value
-}
-
-
-workspace.Fight.Events.FightSwitchKnight:InvokeServer(unpack(args))
+game:GetService("Workspace").Fight.Events.FightSwitchKnight:InvokeServer(value)
 end)
 
 P_1:CreateDropdown("Farm type", {"Teleport","Tween","Reach"}, function(value)
@@ -209,7 +205,7 @@ if FarmType == "Teleport" then
             end)
         end
     end)
-else if FarmType == "Tween" then
+elseif FarmType == "Tween" then
     _G.farmNearest = v
     
     spawn(function()
@@ -238,7 +234,7 @@ local Tw = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPa
             end)
         end
     end)
-else if FarmType == "Reach" then
+elseif FarmType == "Reach" then
     _G.farmNearest = v
     
     
@@ -246,9 +242,6 @@ else if FarmType == "Reach" then
             if not _G.farmNearest then break end
             local nearest = getNear()
 workspace.Fight.Events.FightAttack:InvokeServer(0,nearest.Name)
-end
-end
-end
 end
 end)
 
@@ -277,7 +270,7 @@ if FarmType == "Teleport" then
             end)
         end
     end)
-else if FarmType == "Tween" then
+elseif FarmType == "Tween" then
     _G.farmHighest = v
 
 
@@ -309,7 +302,7 @@ local Tw = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPa
             end)
         end
     end)
-else if FarmType == "Reach" then
+elseif FarmType == "Reach" then
     _G.farmHighest = v
 
 
@@ -318,9 +311,6 @@ else if FarmType == "Reach" then
             if not _G.farmHighest then break end
             local highest = getHighest()
 workspace.Fight.Events.FightAttack:InvokeServer(0,highest)
-end
-end
-end
 end
 end)
 
@@ -349,7 +339,7 @@ if FarmType == "Teleport" then
             end)
         end
     end)
-else if FarmType == "Tween" then
+elseif FarmType == "Tween" then
     _G.farmLowest = v
 
 
@@ -381,7 +371,7 @@ local Tw = TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPa
             end)
         end
     end)
-else if FarmType == "Reach" then
+elseif FarmType == "Reach" then
     _G.farmLowest = v
 
 
@@ -391,9 +381,6 @@ else if FarmType == "Reach" then
             local lowest = getLowest()
             workspace.Fight.Events.FightAttack:InvokeServer(0,lowest)
 end
-end
-end
-end
 end)
 
 P_4:CreateToggle("auto equip best weapon", false, function(value)
@@ -401,12 +388,7 @@ P_4:CreateToggle("auto equip best weapon", false, function(value)
       
          while wait() do
          if EquipBest == false then break end
-             local EquipArtifact = {
-    [1] = "ArtifactEquipBestsChannel"
-}
-
-
-game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer(unpack(EquipArtifact))
+             game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer("ArtifactEquipBestsChannel")
 end
 end)
 
@@ -415,40 +397,20 @@ P_4:CreateToggle("auto unequip best weapon", false, function(value)
       
          while wait() do
          if UnequipBest == false then break end
-             local UnequipArtifact = {
-    [1] = "ArtifactUnequipAllChannel"
-}
-
-
-game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer(unpack(UnequipArtifact))
+             game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer("ArtifactUnequipAllChannel")
 end
 end)
 
 P_2:CreateButton("Defense Mode", function()
-local args = {
-    [1] = "SpiritPlaceOpenSpiritPlaceChannel",
-    [2] = 1
-}
-
-
-game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer(unpack(args))
+game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer("SpiritPlaceOpenSpiritPlaceChannel",1)
 end)
 
 P_2:CreateDropdown("Time trial mode", {"Easy","Hard"}, function(v)
-      local Dungeon = {
-    [1] = "DungeonTeamRoomOpenChannel",
-    [2] = v
-}
-
-game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer(unpack(Dungeon))
+game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer("DungeonTeamRoomOpenChannel",v)
 end)
 
 P_2:CreateButton("Leave room (Time Trial)", function()
-local LeaveDungeon = {
-    [1] = "DungeonTeamRoomDisbandChannel"
-}
-
-game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer(unpack(LeaveDungeon))
+game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer("DungeonTeamRoomDisbandChannel")
 end)
 
 P_1:CreateToggle("Collect Rewards", false, function(v)
@@ -468,20 +430,11 @@ P_1:CreateToggle("Collect Rewards", false, function(v)
 end)
 
 P_1:CreateButton("Collect Limited token", function()
-local Token_2 = {
-    [1] = "JewelTakeDailyRewardChannel"
-}
-
-game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer(unpack(Token_2))
+game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer("JewelTakeDailyRewardChannel")
 end)
 
 P_5:CreateButton("Start Tower", function()
-local Enter = {
-    [1] = "TowerEnterChannel"
-}
-
-
-game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer(unpack(Enter))
+game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer("TowerEnterChannel")
 end)
 
 P_3:CreateButton("Stadium rave", function()
@@ -513,13 +466,7 @@ sound.Volume = 0
 end)
 
 P_5:CreateButton("Leave Tower", function()
-local Stop = {
-    [1] = "TowerTeleportChannel",
-    [2] = "Out"
-}
-
-
-game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer(unpack(Stop))
+game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer("TowerTeleportChannel","Out")
 end)
 
 P_5:CreateToggle("Auto round", false, function(v)
@@ -528,13 +475,7 @@ P_5:CreateToggle("Auto round", false, function(v)
   
         while task.wait() do
             if not _G.farmNearest then break end
-                local AYS = {
-    [1] = "TowerTeleportChannel",
-    [2] = "Next"
-}
-
-
-game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer(unpack(AYS))
+                game:GetService("ReplicatedStorage").CommonLibrary.Tool.RemoteManager.Funcs.DataPullFunc:InvokeServer("TowerTeleportChannel","Next")
     end
 end)
 
