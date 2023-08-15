@@ -243,6 +243,7 @@ elseif FarmType == "Reach" then
             local nearest = getNear()
 workspace.Fight.Events.FightAttack:InvokeServer(0,nearest.Name)
 end
+end
 end)
 
 P_1:CreateToggle("Farm Highest", false, function(v)
@@ -380,6 +381,7 @@ elseif FarmType == "Reach" then
             if not _G.farmLowest then break end
             local lowest = getLowest()
             workspace.Fight.Events.FightAttack:InvokeServer(0,lowest)
+end
 end
 end)
 
