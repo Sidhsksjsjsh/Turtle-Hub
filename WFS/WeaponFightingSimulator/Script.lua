@@ -313,6 +313,7 @@ elseif FarmType == "Reach" then
             local highest = getHighest()
 workspace.Fight.Events.FightAttack:InvokeServer(0,highest)
 end
+end
 end)
 
 P_1:CreateToggle("Farm Lowest", false, function(v)
